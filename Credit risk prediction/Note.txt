@@ -1,0 +1,123 @@
+!pip install pandas seaborn matplotlib scikit-learn imbalanced-learn
+
+Step1:
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import confusion_matrix
+
+from imblearn.over_sampling import SMOTE
+
+Step 2:
+df = pd.read_csv("archive.zip")  
+df.head()
+
+Check columns:
+
+print(df.columns)
+
+
+Step 3:
+plt.figure(figsize=(6,4))
+sns.histplot(df['Income'], bins=30, kde=True)
+plt.title('Income Distribution')
+plt.show()
+
+
+Step 4:
+X = df.drop('Risk_Flag', axis=1)  # Features
+y = df['Risk_Flag']              # Target (0 = Safe, 1 = Risk)
+
+
+Check null values:
+df.isnull().sum()
+
+Step 5:
+
+from sklearn.preprocessing import LabelEncoder
+
+# Make a copy of X so original data is untouched
+X_encoded = X.copy()
+
+# Encode each object (non-numeric) column
+for col in X_encoded.select_dtypes(include=['object']).columns:
+    le = LabelEncoder()
+    X_encoded[col] = le.fit_transform(X_encoded[col])
+
+Step 6:
+from imblearn.over_sampling import SMOTE
+
+smote = SMOTE(random_state=1)
+X_balanced, y_balanced = smote.fit_resample(X_encoded, y)
+
+
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X_balanced, y_balanced, test_size=0.2, random_state=1)
+
+
+from sklearn.linear_model import LogisticRegression
+
+model = LogisticRegression(max_iter=1000)
+model.fit(X_train, y_train)
+
+Step 7:
+from sklearn.metrics import accuracy_score, confusion_matrix
+
+y_pred = model.predict(X_test)
+
+print("Model Accuracy:", accuracy_score(y_test, y_pred))
+print("Confusion Matrix:\n", confusion_matrix(y_test, y_pred))
+
+
+y_balanced.value_counts()
+
+Visualization with graphs code:
+
+sns.countplot(x='Risk_Flag', data=df)
+plt.title('Class Distribution (Risk_Flag)')
+plt.show()
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+sns.countplot(x='Married/Single', hue='Risk_Flag', data=df)
+plt.title('Marital Status vs Credit Risk')
+plt.xlabel('Married or Single')
+plt.ylabel('Count')
+plt.show()
+
+
+sns.countplot(x='Car_Ownership', hue='Risk_Flag', data=df)
+plt.title('Car Ownership vs Credit Risk')
+plt.show()
+
+
+plt.figure(figsize=(15,6))
+sns.countplot(x='Profession', hue='Risk_Flag', data=df)
+plt.title('Profession vs Credit Risk')
+plt.xticks(rotation=90)
+plt.show()
+
+
+from sklearn.metrics import classification_report
+print(classification_report(y_test, y_pred))
+
+// Project Completed
+
+
+
+
+
+
+
+
+
+
+
+
+

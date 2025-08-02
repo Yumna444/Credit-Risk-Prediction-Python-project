@@ -79,12 +79,12 @@ Risk Flag vs Income
 
 Risk Flag vs Age
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/7dad4870-bd3d-4e94-95d4-a4d0d5058afd" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/293b71b2-487c-4904-b18f-cdc60f442f64" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/100e28b3-3e70-44bf-a3ae-25c547d6ccc4" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/e0e328e2-f49f-4825-8b7c-93a4c89a38ef" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/f09661ff-8abf-4aa6-8fd7-7c37660bddf4" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/5266c10a-9025-4a74-bc43-131803f520e5" />
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/62e71b5f-f159-4ed4-b328-0b500019823c" />
-
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/ee161113-b1b5-4b9e-b318-d99b62490545" />
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/1dc4b081-0472-42fd-8e1e-6434a0a802e8" />
 
 ✅ Conclusion
 While the Random Forest model showed moderate accuracy (~54%), the results indicate the need for:
